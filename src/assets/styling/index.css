@@ -1,0 +1,12 @@
+/* shared styling across all pages */
+* {
+	box-sizing: border-box;
+}
+
+html {
+
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+}
