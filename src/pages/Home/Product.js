@@ -1,14 +1,14 @@
 import React from "react";
 
-class Product extends React.Component {
+export default class Product extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			name: '',
-			properties: '',
-			price: 0,
-
+			sku: 1,
+			name: 'Test',
+			price: 1.00,
+			properties: 'Size: 45cm wide'
 		}
 	}
 
@@ -19,20 +19,20 @@ class Product extends React.Component {
 
 				<p className={''}>
 					<iconify-icon icon={"icons8:price-tag"}></iconify-icon>
-					<span className={''}>1.00$</span>
+					<span className={''}>{this.state.price}$</span>
 				</p>
 
 				<p className={''}>
 					<iconify-icon icon={"vaadin:disc"}></iconify-icon>
-					<span className={''}>Acme Disk</span>
+					<span className={''}>{this.state.name}</span>
 				</p>
 
 				<p className={''}>
 					<iconify-icon icon={"fluent-mdl2:offline-storage-solid"}></iconify-icon>
-					<span className={''}>700MB</span>
+					<span className={''}>{this.state.properties}</span>
 				</p>
 
-				<p className={''}>#</p>
+				<p className={''}>#{this.state.sku}</p>
 			</article>
 		);
 	}
