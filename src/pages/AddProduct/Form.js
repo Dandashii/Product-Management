@@ -8,8 +8,12 @@ export default class AddForm extends  React.Component {
 		}
 
 		this.handleProductType = this.handleProductType.bind(this);
+		this.handleSaveProduct = this.handleSaveProduct.bind(this);
 	}
 
+	handleSaveProduct(event) {
+
+	}
 	handleProductType(event) {
 		this.setState({
 			productType: event.target.value
@@ -40,6 +44,7 @@ export default class AddForm extends  React.Component {
 					<label htmlFor="productType">TYPE SWITCHER</label>
 					<select value={this.state.productType} name="productSwitcher" id="productType"
 					        onChange={this.handleProductType}>
+						<option value="" selected disabled hidden>Choose the type of product</option>
 						<option id="DVD" value="DVD">DVD</option>
 						<option id="Book" value="Book">Book</option>
 						<option id="Furniture" value="Furniture">Furniture</option>
@@ -48,7 +53,10 @@ export default class AddForm extends  React.Component {
 
 				<ProductProperties type={this.state.productType}/>
 			</form>
-			);
+		);
 	}
 }
+
+
+
 

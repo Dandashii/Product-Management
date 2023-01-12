@@ -12,7 +12,7 @@ homePage.render(
 	<BrowserRouter>
 		<Routes>
 			<Route index path="/" element={<ProductList />}/>
-			<Route path="productAdd" element={<ProductAdd />} />
+			<Route path="add-product" element={<ProductAdd />} />
 		</Routes>
 	</BrowserRouter>
 );

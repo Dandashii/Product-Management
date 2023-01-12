@@ -30,4 +30,20 @@ class Product {
 	public function getType() {
 		return $this->type;
 	}
+
+	public function setSKU($sku) {
+
+	}
+
+	public function setName($name) {
+
+	}
+
+	public function setPrice($price) {
+
+	}
+
+	public function setType($type) {
+
+	}
 }
