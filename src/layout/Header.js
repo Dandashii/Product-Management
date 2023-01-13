@@ -54,6 +54,4 @@ const AddProductPageHeader = (props) => {
 	);
 }
 
-
-
 export default Header;
