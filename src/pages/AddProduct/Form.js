@@ -1,5 +1,6 @@
 import ProductProperties from "./PropertiesForm";
 import React from "react";
+import axios from 'axios';
 
 const productProperties = {
 	'DVD': {
@@ -35,6 +36,16 @@ export default class AddForm extends React.Component {
 	saveProduct(event) {
 		event.preventDefault();
 
+		const productData = {};
+		Object.assign(productData, this.state);
+
+		axios.post('http://localhost:8080/addProduct.php', productData)
+			.then(response => {
+				console.log(response.data);
+			})
+			.catch(error => {
+				console.error(error);
+			});
 	}
 
 	handleChange(event) {
@@ -60,7 +71,7 @@ export default class AddForm extends React.Component {
 
 	render () {
 		return (
-			<form id={'product_form'} method={'POST'} action={'./'} onSubmit={this.saveProduct}>
+			<form id={'product_form'} onSubmit={this.saveProduct}>
 				<div className={'main-input'}>
 					<label htmlFor="sku">SKU (#)</label>
 					<input type="text" onChange={this.handleChange} name={'sku'} id={'sku'}
@@ -96,6 +107,28 @@ export default class AddForm extends React.Component {
 	}
 }
 
+let test = {
+	'size': {
+		getSize() {
+			return this.size;
+		},
+		setSize(size) {
+			this.size = size;
+		}
+	}
+}
 
+function getProperties() {
+	return {
+		'size': {
+			getSize() {
+				return this.size;
+			},
+			setSize(size) {
+				this.size = size;
+			}
+		}
+	}
+}
 
 
