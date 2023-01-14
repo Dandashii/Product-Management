@@ -107,28 +107,5 @@ export default class AddForm extends React.Component {
 	}
 }
 
-let test = {
-	'size': {
-		getSize() {
-			return this.size;
-		},
-		setSize(size) {
-			this.size = size;
-		}
-	}
-}
-
-function getProperties() {
-	return {
-		'size': {
-			getSize() {
-				return this.size;
-			},
-			setSize(size) {
-				this.size = size;
-			}
-		}
-	}
-}
 
 
