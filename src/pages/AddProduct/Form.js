@@ -35,28 +35,29 @@ export default class AddForm extends React.Component {
 	saveProduct(event) {
 		event.preventDefault();
 
-		console.log(this.state);
 	}
 
 	handleChange(event) {
 		this.setState({ [event.target.name] : event.target.value });
 	}
+
 	changeProductType(event) {
 		this.setState({
 			type: event.target.value,
-			properties: productProperties[this.state.type]});
-	}
-
-	handleProductProperties(event) {
-		let currentProperties = {};
-		for(const property in productProperties[this.state.type]) {
-			currentProperties[property] = event.target.value;
-		}
-
-		this.setState({
-			properties: Object.assign(currentProperties)
+			properties: productProperties[event.target.name]
 		});
 	}
+
+	handleProductProperties = (event) => {
+		this.setState((previousState) => {
+			let tempProperties = {...previousState.properties};
+			tempProperties[event.target.name] = event.target.value;
+			return {
+				properties: tempProperties
+			}
+		});
+	}
+
 	render () {
 		return (
 			<form id={'product_form'} method={'POST'} action={'./'} onSubmit={this.saveProduct}>
