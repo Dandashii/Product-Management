@@ -5,32 +5,70 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 
-use backend\abstract\Product;
-use backend\abstract\BOOK;
-use backend\abstract\DVD;
-use backend\abstract\Furniture;
+include 'abstract/Product.php';
+include 'abstract/DVD.php';
+include 'abstract/Book.php';
+include 'abstract/Furniture.php';
+
+$formDataJson = file_get_contents('php://input');
+$productData = json_decode($formDataJson);
+
+/*if (filter_input(INPUT_POST, 'submit')) {
+	// form was submitted
+	// access form data in $_POST
+} else {
+	// form
+}*/
 
 
-$request_body = file_get_contents('php://input');
-$productData = json_decode($request_body, true);
+switch ($productData->type) {
+	case "DVD":
+		$product = new DVD();
 
-$sku = $productData["sku"];
-$name = $productData["name"];
-$price = $productData["price"];
-$type = $productData["type"];
-$properties = $productData["properties"];
+		$product->setSKU($productData->sku);
+		$product->setName($productData->name);
+		$product->setPrice($productData->price);
+		$product->setType($productData->type);
 
-$product = new Product($sku, $name, $price, $type);
-
-switch ($product->getType()) {
-	case 'DVD':
-		$productType = new DVD();
+		//DVD SIZE
+		$product->setSize($productData->properties->size);
 		break;
-	case 'Book':
-		$productType = new Book();
+	case "Book":
+		$product = new Book();
+
+		$product->setSKU($productData->sku);
+		$product->setName($productData->name);
+		$product->setPrice($productData->price);
+		$product->setType($productData->type);
+
+		//Book WEIGHT
+		$product->setWeight($productData->properties->weight);
 		break;
-	case 'Furniture':
-		$productType = new Furniture();
+	case "Furniture":
+		$product = new Furniture();
+
+		$product->setSKU($productData->sku);
+		$product->setName($productData->name);
+		$product->setPrice($productData->price);
+		$product->setType($productData->type);
+
+		//Furniture piece DIMENSIONS
+		$product->setHeight($productData->properties->height);
+		$product->setWidth($productData->properties->width);
+		$product->setLength($productData->properties->length);
+		break;
+	default:
 		break;
 }
 
+/*
+$stmt = $connection->prepare("INSERT INTO products(sku, name, price, type, properties) VALUES (?, ?, ?, ?, ?)");
+$stmt->bind_param("ssdss", $sku, $name, $price, $type, $properties);
+$stmt->execute();
+$stmt->close();
+
+$connection->close();*/
+
+
+
+echo json_encode($product);

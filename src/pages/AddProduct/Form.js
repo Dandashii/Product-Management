@@ -36,10 +36,17 @@ export default class AddForm extends React.Component {
 	saveProduct(event) {
 		event.preventDefault();
 
-		const productData = {};
-		Object.assign(productData, this.state);
+		const data = JSON.stringify({
+			sku: this.state.sku,
+			name: this.state.name,
+			price: this.state.price,
+			type: this.state.type,
+			properties: this.state.properties
+		});
 
-		axios.post('http://localhost:8080/addProduct.php', productData)
+		//console.log(data);
+
+		axios.post('http://localhost:8080/addProduct.php', data)
 			.then(response => {
 				console.log(response.data);
 			})

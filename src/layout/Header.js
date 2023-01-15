@@ -39,9 +39,7 @@ const AddProductPageHeader = (props) => {
 		<header>
 			<h1>{props.pageTitle}</h1>
 
-			<button type={'submit'} form={'product_form'} className={'save-product-btn'}>
-				SAVE
-			</button>
+			<input type={'submit'} name={'submit'} form={'product_form'} id={'submit'} className={'submit'} value={'save'}/>
 
 			<NavBar
 				linkBtnClassName={'cancel-save-link'}

@@ -1,49 +1,40 @@
 <?php
 
-namespace backend\abstract;
-
 class Product {
-	protected string $sku;
-	protected string $name;
-	protected float $price;
-	protected string $type;
+	public $sku;
+	public $name;
+	public $price;
+	public $type;
 
-	public function __construct($sku, $name, $price, $type) {
-		$this->sku = $sku;
-		$this->name = $name;
-		$this->price = $price;
-		$this->type = $type;
-	}
-
-	public function getSKU():string {
+	public function getSKU() {
 		return $this->sku;
 	}
 
-	public function getName():string {
+	public function getName() {
 		return $this->name;
 	}
 
-	public function getPrice():string {
+	public function getPrice() {
 		return $this->price;
 	}
 
-	public function getType():string {
+	public function getType() {
 		return $this->type;
 	}
 
-	public function setSKU($sku):void {
+	public function setSKU($sku) {
 		$this->sku = $sku;
 	}
 
-	public function setName($name):void {
+	public function setName($name) {
 		$this->name = $name;
 	}
 
-	public function setPrice($price):void {
-		$this->$price = $price;
+	public function setPrice($price) {
+		$this->price = $price;
 	}
 
-	public function setType($type):void {
-		$this->$type = $type;
+	public function setType($type) {
+		$this->type = $type;
 	}
 }

@@ -1,25 +1,17 @@
 <?php
 
-namespace backend\abstract;
-
 class DVD extends Product {
-	protected float $size;
-
-	function __construct($sku, $name, $price, $type, $size) {
-		parent::__construct($sku, $name, $price, $type='DVD');
-
-		$this->size = $size;
-	}
+	public $size;
 
 	function getProperties():array {
 		return array('size' => $this->size);
 	}
 
-	function getSize():float {
+	function getSize() {
 		return $this->size;
 	}
 
-	function setSize($size):void {
+	function setSize($size) {
 		$this->size = $size;
 	}
 }
