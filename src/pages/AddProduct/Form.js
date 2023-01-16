@@ -22,7 +22,7 @@ export default class AddForm extends React.Component {
 		this.state = {
 			sku: '',
 			name: '',
-			price: '',
+			price: 0,
 			type: '',
 			properties: {}
 		}
@@ -36,19 +36,11 @@ export default class AddForm extends React.Component {
 	saveProduct(event) {
 		event.preventDefault();
 
-		const data = JSON.stringify({
-			sku: this.state.sku,
-			name: this.state.name,
-			price: this.state.price,
-			type: this.state.type,
-			properties: this.state.properties
-		});
+		const productData = JSON.stringify(this.state);
 
-		//console.log(data);
-
-		axios.post('http://localhost:8080/addProduct.php', data)
+		axios.post('http://localhost:8080/addProduct.php', productData)
 			.then(response => {
-				console.log(response.data);
+				event.target.reset();
 			})
 			.catch(error => {
 				console.error(error);
@@ -68,12 +60,22 @@ export default class AddForm extends React.Component {
 
 	handleProductProperties = (event) => {
 		this.setState((previousState) => {
-			let tempProperties = {...previousState.properties};
-			tempProperties[event.target.name] = event.target.value;
+			let properties = {...previousState.properties};
+			properties[event.target.name] = event.target.value;
 			return {
-				properties: tempProperties
+				properties
 			}
 		});
+	}
+
+	componentWillUnmount() {
+		this.setState({
+			sku: '',
+			name: '',
+			price: 0,
+			type: '',
+			properties: {}
+		})
 	}
 
 	render () {

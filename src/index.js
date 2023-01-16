@@ -6,9 +6,9 @@ import ProductAdd from "./pages/AddProduct/App";
 
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
-const homePage = ReactDOM.createRoot(document.querySelector('#root'));
+const root = ReactDOM.createRoot(document.querySelector('#root'));
 
-homePage.render(
+root.render(
 	<BrowserRouter>
 		<Routes>
 			<Route index path="/" element={<ProductList />}/>

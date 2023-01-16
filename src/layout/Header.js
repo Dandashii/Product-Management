@@ -1,9 +1,8 @@
 import NavBar from "./NavBar";
-import {Link} from "react-router-dom";
 
 const Header = (props) => {
 	const headerType = {
-		'productList': <HomePageHeader currentPage={props.currentPage}/>,
+		'productList': <HomePageHeader handleDelete={props.handleDelete} currentPage={props.currentPage}/>,
 		'productAdd': <AddProductPageHeader currentPage={props.currentPage}/>
 	}
 
@@ -27,7 +26,7 @@ const HomePageHeader = (props) => {
 			because non-linking buttons shouldn't be placed into the nav therefore
 			I had to find a workaround from not creating a NAVBAR for each page*/}
 
-			<button className={'mass-delete-btn'}>
+			<button onClick={() => props.handleDelete()} className={'mass-delete-btn'}>
 				MASS DELETE
 			</button>
 		</header>
