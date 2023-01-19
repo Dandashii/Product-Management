@@ -13,11 +13,6 @@ $messages = [];
 for($sku = 0; $sku < count($selectedProducts); $sku++) {
 	$stmt = $connection->prepare("DELETE FROM products where sku = ?");
 	$stmt->bind_param('s', $selectedProducts[$sku]);
-	if($stmt->execute()) {
-		$messages[] = [$selectedProducts[$sku] => ': sucessfully deleted!'];
-	} else {
-		$messages[] = [$selectedProducts[$sku] => ': sucessfully deleted!'];
-	}
+	$stmt->execute();
 }
 
-echo json_encode($messages);

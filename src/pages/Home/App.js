@@ -3,7 +3,21 @@ import Header from "../../layout/Header.js";
 import Footer from "../../layout/Footer.js";
 import axios from "axios";
 import Product from "./Product";
-import {json} from "react-router-dom";
+import '../../assets/styling/Home.scss';
+
+const productProperties = {
+	'DVD': {
+		size: 0
+	},
+	'Book': {
+		weight: 0
+	},
+	'Furniture': {
+		height: 0,
+		width: 0,
+		length: 0
+	}
+}
 
 export default class ProductList extends React.Component {
 	constructor(props) {
@@ -54,10 +68,12 @@ export default class ProductList extends React.Component {
 				this.setState({
 					products: products
 				});
+				console.log(...response.data);
 			}).catch(error => {
 			console.log(error);
 		})
 	}
+
 	componentDidMount() {
 		this.getProducts();
 	}

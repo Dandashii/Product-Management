@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './assets/styling/index.css';
+import './assets/styling/index.scss';
 import ProductList from "./pages/Home/App";
 import ProductAdd from "./pages/AddProduct/App";
 

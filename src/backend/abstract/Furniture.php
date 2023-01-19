@@ -1,36 +1,56 @@
 <?php
 
-class Furniture extends Product {
-	public $height;
-	public $width;
-	public $length;
-
-	function getProperties():array {
-		return array('height' => $this->height, 'width' => $this->width, 'length' => $this->length);
+class Furniture extends Product
+{
+	public $type = 'Furniture';
+	public $properties;
+	public function __construct($sku = null, $name = null, $price = null, $properties = null)
+	{
+		parent::__construct($sku, $name, $price);
+		$this->setProperties($properties);
 	}
 
-	function getHeight() {
-		return $this->height;
+	public function getProperties():object
+	{
+		return $this->properties;
 	}
 
-	function getWidth() {
-		return $this->width;
+	public function setProperties($properties)
+	{
+		$this->properties = (object) [
+			'height' => $properties->height,
+			'width' => $properties->width,
+			'length' => $properties->length
+		];
 	}
 
-	function getLength() {
-		return $this->length;
+	public function getHeight()
+	{
+		return $this->properties->height;
 	}
 
-	function setHeight($height) {
-		$this->height = $height;
+	public function setHeight($height)
+	{
+		$this->properties->height = $height;
 	}
 
-	function setWidth($width) {
-		$this->width = $width;
+	public function getWidth() {
+		return $this->properties->width;
 	}
 
-	function setLength($length) {
-		$this->length = $length;
+	public function setWidth($width)
+	{
+		$this->properties->width = $width;
 	}
 
+	public function getLength() 
+	{
+		return $this->properties->length;
+	}
+
+	public function setLength($length) 
+	{
+		$this->properties->length = $length;
+	}
 }
+	
