@@ -11,7 +11,7 @@ Scandiweb's skills test assignment written in React, SASS, and PHP.
 
 
 <h3> Product ADD </h3>
-<img width="1440" alt="Product Add" src="https://user-images.githubusercontent.com/9285042/214294743-3995c07d-8315-4b1b-98cc-7d0ff5d7c275.png">
+<img width="1440" alt="Product Add" src="https://user-images.githubusercontent.com/9285042/214295451-b5674f84-6256-4c62-9c81-f6b5937f356c.png">
 
 <h5> Product ADD - phone </h5>
 <img width="430" alt="Product Add - Phone" src="https://user-images.githubusercontent.com/9285042/214294822-7c85e30c-65c7-4007-b8a7-da0c7d387534.png">
