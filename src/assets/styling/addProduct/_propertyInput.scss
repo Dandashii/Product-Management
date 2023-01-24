@@ -45,6 +45,7 @@
       @include font-properties($place-holder-color, $place-holder-font-size, $place-holder-font-weight);
       padding-left: 10px;
       width: 70%;
+      border: none;
       &:focus {
         outline: none;
       }
