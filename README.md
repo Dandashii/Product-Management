@@ -1,6 +1,4 @@
-# scandiweb-assignment
-Scandiweb's skills test assignment written in React, SASS, and PHP.
-
+<h5> The website is composed of adding a product and deleteing them. The products are displayed at the homepage </h5>
 <h1> Figma Prototypes </h1>
 
 <h3> Homepage </h3>
