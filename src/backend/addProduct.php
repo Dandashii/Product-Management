@@ -12,6 +12,8 @@ include 'abstract/DVD.php';
 include 'abstract/Book.php';
 include 'abstract/Furniture.php';
 
+include 'handlers/ProductDataHandler.php';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$formData = file_get_contents('php://input');
 
@@ -26,6 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	//save the product into the product's table
 	$product->save($connection);
+
+	$connection->close();
 
 	//Old method, realized it was wrong later because i cannot use conditionals incase there were thousands of products...
 	//Return the appropriate initialized class

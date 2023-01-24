@@ -6,13 +6,12 @@ header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 
 include 'database/connection.php';
 
-$formData = file_get_contents('php://input');
-$selectedProducts = json_decode($formData);
-$messages = [];
-
-for($sku = 0; $sku < count($selectedProducts); $sku++) {
-	$stmt = $connection->prepare("DELETE FROM products where sku = ?");
-	$stmt->bind_param('s', $selectedProducts[$sku]);
-	$stmt->execute();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+	$formData = file_get_contents('php://input');
+	$selectedProducts = json_decode($formData);
+	foreach ($selectedProducts as $product) {
+		$stmt = $connection->prepare("DELETE FROM product where sku = ?");
+		$stmt->bind_param('s', $product);
+		$stmt->execute();
+	}
 }
-

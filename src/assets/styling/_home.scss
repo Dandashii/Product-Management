@@ -1,6 +1,5 @@
-@import "variables";
-@import "mixins";
-
+@import "global/variables";
+@import "global/mixins";
 .product-list-container {
   display: flex;
   flex-flow: row wrap;

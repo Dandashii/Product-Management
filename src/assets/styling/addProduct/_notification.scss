@@ -1,0 +1,26 @@
+.notifications-container {
+  height: 120px;
+  width: 340px;
+  background: #e6e6e6;
+  border-radius: 100px 100px 0px 0px;
+  text-align: center;
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+
+  .error-title {
+    @include font-properties(#414141, 22px ,700);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    margin-bottom: 10px;
+  }
+
+  .error-desc {
+    @include font-properties(#414141, 18px , lighter);
+    margin: 0;
+    @include phone-screen() {
+      font-size: 14px;
+    }
+  }
+}

@@ -4,7 +4,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 
-include '../backend/database/connection.php';
+include 'database/connection.php';
 include 'abstract/Product.php';
 include 'abstract/DVD.php';
 include 'abstract/Book.php';
@@ -15,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	$stmt = $connection->prepare('SELECT * FROM products ORDER BY id DESC');
 	$stmt->execute();
 	$result = $stmt->get_result();
-
 	while ($row = $result->fetch_object()) {
 		//had to do this because the properties in table are in stringed format.
 		$properties = json_decode($row->properties);

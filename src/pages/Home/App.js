@@ -3,21 +3,7 @@ import Header from "../../layout/Header.js";
 import Footer from "../../layout/Footer.js";
 import axios from "axios";
 import Product from "./Product";
-import '../../assets/styling/Home.scss';
-
-const productProperties = {
-	'DVD': {
-		size: 0
-	},
-	'Book': {
-		weight: 0
-	},
-	'Furniture': {
-		height: 0,
-		width: 0,
-		length: 0
-	}
-}
+import '../../assets/styling/_home.scss';
 
 export default class ProductList extends React.Component {
 	constructor(props) {
@@ -39,8 +25,6 @@ export default class ProductList extends React.Component {
 		const selectedProducts = JSON.stringify(this.state.selectedProducts);
 		axios.post('http://localhost:8080/removeProduct.php', selectedProducts)
 			.then(response => {
-				//Log deletion messages
-				console.log(response.data);
 				this.getProducts();
 			}).catch(error => {
 				console.error(error);
@@ -68,7 +52,6 @@ export default class ProductList extends React.Component {
 				this.setState({
 					products: products
 				});
-				console.log(...response.data);
 			}).catch(error => {
 			console.log(error);
 		})

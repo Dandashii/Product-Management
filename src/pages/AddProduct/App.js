@@ -4,22 +4,7 @@ import Footer from "../../layout/Footer.js";
 import axios from "axios";
 import Notification from "./Notification";
 import Properties from "./Properties";
-import '../../assets/styling/AddProduct.scss';
-
-// I did this because i just didnt want to put all of them in component's state  to simply pick the right one!
-const productProperties = {
-	'DVD': {
-		size: 0
-	},
-	'Book': {
-		weight: 0
-	},
-	'Furniture': {
-		height: 0,
-		width: 0,
-		length: 0
-	}
-}
+import '../../assets/styling/addProduct/_addproduct.scss';
 
 class ProductAdd extends React.Component {
 	constructor(props) {
@@ -39,6 +24,7 @@ class ProductAdd extends React.Component {
 				display: false
 			}
 		}
+
 		this.clearStates = this.clearStates.bind(this);
 		this.changeProductType = this.changeProductType.bind(this);
 		this.handleChange = this.handleChange.bind(this);
@@ -62,56 +48,39 @@ class ProductAdd extends React.Component {
 		})
 	}
 
-	
 	saveProduct(event) {
 		event.preventDefault();
-		let formData = {
-			sku: this.state.sku.split(" ").join(""), //remove whitespace
-			name: this.state.name,
-			price: this.state.price,
-			type: this.state.type,
-			properties: this.state.properties
-		};
 
-		for(let data in formData.properties) {
-			console.log(formData.properties[data]);
+		const productData = JSON.stringify({
+				sku: this.state.sku.split(" ").join(""), //remove whitespace
+				name: this.state.name,
+				price: this.state.price,
+				type: this.state.type,
+				properties: this.state.properties
+			}
+		);
 
-		}
-
-
-			const productData = JSON.stringify({
-					sku: this.state.sku.split(" ").join(""), //remove whitespace
-					name: this.state.name,
-					price: this.state.price,
-					type: this.state.type,
-					properties: this.state.properties
+		axios.post('http://localhost:8080/addProduct.php', productData)
+			.then(response => {
+				if (response.data.error) {
+					this.setState({
+						error: {
+							target: response.data.error.target,
+							type: response.data.error.type,
+							desc: response.data.error.desc,
+							display: true,
+						}
+					})
+				} else {
+					this.clearStates();
+					event.target.reset();
 				}
-			);
-
-
-			axios.post('http://localhost:8080/addProduct.php', productData)
-				.then(response => {
-					if (response.data.error) {
-						this.setState({
-							error: {
-								target: response.data.error.target,
-								type: response.data.error.type,
-								desc: response.data.error.desc,
-								display: true,
-							}
-						})
-					} else {
-						this.clearStates();
-						event.target.reset();
-					}
-				})
-				.catch(error => {
-					console.error(error);
-				});
-
-
-
+			})
+			.catch(error => {
+				console.error(error);
+			});
 	}
+
 
 	handleChange(event) {
 		this.setState({ [event.target.name] : event.target.value });
@@ -119,8 +88,7 @@ class ProductAdd extends React.Component {
 
 	changeProductType(event) {
 		this.setState({
-			type: event.target.value,
-			properties: productProperties[event.target.name]
+			type: event.target.value
 		});
 	}
 
@@ -149,7 +117,7 @@ class ProductAdd extends React.Component {
 						<div className={'label-container'}>
 							<label htmlFor="sku">SKU (#)</label>
 						</div>
-						<input type="text" onChange={this.handleChange} name={'sku'} id={'sku'}
+						<input type="text" onChange={this.handleChange} name={'sku'} id={'sku'} required={true}
 						       placeholder={'Please provide the SKU ID of the product'} />
 					</div>
 
@@ -157,7 +125,7 @@ class ProductAdd extends React.Component {
 						<div className={'label-container'}>
 							<label htmlFor="name">NAME</label>
 						</div>
-						<input type="text" onChange={this.handleChange} name={'name'} id={'name'}
+						<input type="text" onChange={this.handleChange} name={'name'} id={'name'} required={true}
 						       placeholder={'Please provide the name of the product'} />
 					</div>
 
@@ -165,7 +133,7 @@ class ProductAdd extends React.Component {
 						<div className={'label-container'}>
 							<label htmlFor="price">PRICE ($)</label>
 						</div>
-						<input type="number" min={1} onChange={this.handleChange} name={'price'} id={'price'}
+						<input type="number" onChange={this.handleChange} name={'price'} id={'price'} required={true}
 						       placeholder={'Please provide the price of the product'} />
 					</div>
 
@@ -174,7 +142,7 @@ class ProductAdd extends React.Component {
 							<label htmlFor="productType">TYPE SWITCHER</label>
 						</div>
 
-						<select value={this.state.type} name="type" id="productType"
+						<select value={this.state.type} name="type" id="productType" required={true}
 						        onChange={this.changeProductType} >
 							<option value="" disabled hidden>Pick a type of product ...</option>
 							<option id="DVD" value="DVD">DVD</option>
@@ -193,4 +161,5 @@ class ProductAdd extends React.Component {
 		);
 	}
 }
+
 export default ProductAdd;

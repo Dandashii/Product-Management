@@ -1,5 +1,7 @@
-@import "variables";
-@import "mixins";
+@import "global/variables";
+@import "global/mixins";
+@import "global/header/_header";
+@import "global/_footer";
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Source+Sans+Pro&display=swap');
 
 * {
@@ -10,114 +12,13 @@ body {
   font-family: $font;
   padding: 0;
   margin: 0;
-  position: relative;
+  color: white;
 
   #root {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    header {
-      color: $layout-font-color;
-      background-color: $layout-color;
-      height: 140px;
-      display: flex;
-      flex-flow: column nowrap;
-      justify-content: flex-end;
-
-      @media (max-width: 700px) {
-        justify-content: center;
-      }
-
-        .header-container {
-        width: 95%;
-        margin: 0 auto;
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        align-items: center;
-        gap: 20px;
-        padding: 15px;
-
-         @media (max-width: 700px) {
-           width: 100%;
-           flex-flow: column wrap;
-           gap: 0;
-           padding: 0;
-         }
-
-        .header-title {
-          margin: 0 auto 0 0;
-          font-size: 50px;
-
-          @media (max-width: 700px) {
-            margin: 0;
-          }
-        }
-
-        .buttons-container {
-          display: flex;
-          flex-flow: row nowrap;
-          gap: 20px;
-            .header-link-btn {
-            background-color: $link-btn-background;
-            text-decoration: none;
-            @include font-properties(#8E3451, 20px, 500); //font color, size, and weight
-            @include border-radius(25px);
-            @include flex-center();
-            @include box-dimensions(115px, 45px); //width and height
-            gap: 5px;
-          }
-
-          .header-action-btn {
-            background-color: $action-btn-background;
-            border: none;
-            @include font-properties(white, 20px, 500); //font color, size, and weight
-            @include flex-center();
-            @include border-radius(25px);
-            @include box-dimensions(175px, 45px); //width and height
-          }
-
-          .save-btn {
-            @include box-dimensions(115px, 45px); //width and height
-            gap: 5px;
-          }
-
-          .header-action-btn:hover {
-            background: #3f1221;
-            cursor: pointer;
-          }
-        }
-
-      }
-    }
-
-    footer {
-      height: 150px;
-      color: $layout-font-color;
-      font-weight: bold;
-      background-color: $layout-color;
-      @include flex-center;
-      flex-flow: column nowrap;
-
-      .footer-title {
-        font-size: 30px;
-        margin: 0;
-
-        @media (max-width: 460px) {
-          font-size: 6vw;
-        }
-      }
-
-      .footer-author {
-        font-size: 20px;
-        margin: 10px;
-        @media (max-width: 460px) {
-          font-size: 5vw;
-        }
-      }
-    }
   }
 }
 

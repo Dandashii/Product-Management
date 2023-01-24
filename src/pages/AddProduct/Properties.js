@@ -13,12 +13,12 @@ const Properties = (props) => {
 const DVDProperties = (props) => {
 	return (
 		<div className={'product-properties'}>
-			<h2 className={'property-title'}>{props.type} Properties</h2>
-			<div className={'property-input'}>
+			<h2 className={'properties-title'}>{props.type} Properties</h2>
+			<div className={'property-container'}>
 				<div className={'label-container'}>
 					<label htmlFor="size">SIZE (MB)</label>
 				</div>
-				<input onChange={props.onChange} type={"number"}  name={'size'} id={'size'} placeholder={'Please provide the size of the DVD'} />
+				<input onChange={props.onChange} type={"number"} name={'size'} id={'size'} required={true} placeholder={'Please provide the size of the DVD'} />
 			</div>
 			<p className={'product-description'}>
 				<span>* Please provide size in mb</span>
@@ -30,12 +30,12 @@ const DVDProperties = (props) => {
 const BookProperties = (props) => {
 	return (
 		<div className={'product-properties'}>
-			<h2 className={'property-title'}>{props.type} Properties</h2>
-			<div className={'property-input'}>
+			<h2 className={'properties-title'}>{props.type} Properties</h2>
+			<div className={'property-container'}>
 				<div className={'label-container'}>
 					<label htmlFor="weight">WEIGHT (KG)</label>
 				</div>
-				<input onChange={props.onChange} type="number"  name={'weight'} id={'weight'} placeholder={'Please provide the weight of the Book'} />
+				<input onChange={props.onChange} type="number"  name={'weight'} id={'weight'} required={true} placeholder={'Please provide the weight of the Book'} />
 			</div>
 			<p className={'product-description'}>
 				<span>* Please provide weight in kg</span>
@@ -48,24 +48,24 @@ const BookProperties = (props) => {
 const FurnitureProperties = (props) => {
 	return (
 		<div className={'product-properties'}>
-			<h2 className={'property-title'}>{props.type} Properties</h2>
-			<div className={'property-input'}>
+			<h2 className={'properties-title'}>{props.type} Properties</h2>
+			<div className={'property-container'}>
 				<div className={'label-container'}>
 					<label htmlFor="height">HEIGHT (CM)</label>
 				</div>
-				<input onChange={props.onChange} type="number"  name={'height'} id={'height'} placeholder={'Please provide the height of the Furniture piece'} />
+				<input onChange={props.onChange} type="number" name={'height'} id={'height'} required={true} placeholder={'Please provide the height of the Furniture piece'} />
 			</div>
-			<div className={'property-input'}>
+			<div className={'property-container'}>
 				<div className={'label-container'}>
 					<label htmlFor="width">WIDTH (CM)</label>
 				</div>
-				<input onChange={props.onChange} type="number"  name={'width'} id={'width'} placeholder={'Please provide the width of the Furniture piece'} />
+				<input onChange={props.onChange} type="number" name={'width'} id={'width'} required={true} placeholder={'Please provide the width of the Furniture piece'} />
 			</div>
-			<div className={'property-input'}>
+			<div className={'property-container'}>
 				<div className={'label-container'}>
 					<label htmlFor="length">LENGTH (CM)</label>
 				</div>
-				<input onChange={props.onChange} type="number"  name={'length'} id={'length'} placeholder={'Please provide the length of the Furniture piece'} />
+				<input onChange={props.onChange} type="number" name={'length'} id={'length'} required={true} placeholder={'Please provide the length of the Furniture piece'} />
 			</div>
 			<p className={'product-description'}>
 				<span>* Please provide dimensions in H x W x L format</span>

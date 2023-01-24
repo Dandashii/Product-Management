@@ -2,20 +2,20 @@
 
 class Furniture extends Product
 {
-	public $type = 'Furniture';
-	public $properties;
-	public function __construct($sku = null, $name = null, $price = null, $properties = null)
+	public string $type = 'Furniture';
+	public object $properties;
+	public function __construct(string $sku = null, string $name = null, int $price = null, object $properties = null)
 	{
 		parent::__construct($sku, $name, $price);
 		$this->setProperties($properties);
 	}
 
-	public function getProperties():object
+	public function getProperties(): object
 	{
 		return $this->properties;
 	}
 
-	public function setProperties($properties)
+	private function setProperties($properties): void
 	{
 		$this->properties = (object) [
 			'height' => $properties->height,
@@ -24,31 +24,32 @@ class Furniture extends Product
 		];
 	}
 
-	public function getHeight()
+	public function getHeight(): int
 	{
 		return $this->properties->height;
 	}
 
-	public function setHeight($height)
+	public function setHeight($height): void
 	{
 		$this->properties->height = $height;
 	}
 
-	public function getWidth() {
+	public function getWidth(): int
+	{
 		return $this->properties->width;
 	}
 
-	public function setWidth($width)
+	public function setWidth($width): void
 	{
 		$this->properties->width = $width;
 	}
 
-	public function getLength() 
+	public function getLength(): int
 	{
 		return $this->properties->length;
 	}
 
-	public function setLength($length) 
+	public function setLength($length): void
 	{
 		$this->properties->length = $length;
 	}

@@ -1,3 +1,9 @@
+//Variables for media queries
+$extra-small-screen: 350px;
+$small-screen: 480px;
+$medium-screen: 740px;
+$large-screen: 1024px;
+
 //Header and footer commonly used variables
 $font: 'Poppins', sans-serif;
 $layout-color: #713043;
@@ -35,3 +41,8 @@ $property-font-size: 24px;
 $place-holder-color: #838383;
 $place-holder-font-weight: 300;
 $place-holder-font-size: 22px;
+
+
+$product-description-color: #6D6D6D;
+$product-description-size: 25px;
+$product-description-weight: 500;

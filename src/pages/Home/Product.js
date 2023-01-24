@@ -1,4 +1,5 @@
-import '../../assets/styling/Home.scss';
+import '../../assets/styling/_home.scss';
+
 const Product = (props) => {
 	const productTypes = {
 		'DVD': <DVD handleSelect={props.handleSelect} sku={props.sku} name={props.name} price={props.price} type={props.type} properties={props.properties}/>,

@@ -2,28 +2,29 @@
 
 abstract class Product
 {
-	public $sku;
-	public $name;
-	public $price;
-	public $type = null;
-	public function __construct($sku = null, $name = null, $price = null)
+	public string $sku;
+	public string $name;
+	public int $price;
+	public string $type;
+
+	public function __construct(string $sku = null, string $name = null, int $price = null)
 	{
 		$this->sku = $sku;
 		$this->name = $name;
 		$this->price = $price;
 	}
 
-	public function getSKU()
+	public function getSKU(): string
 	{
 		return $this->sku;
 	}
 
-	public function setSKU($sku)
+	public function setSKU($sku): void
 	{
 		$this->sku = $sku;
 	}
 
-	public function getName()
+	public function getName(): string
 	{
 		return $this->name;
 	}
@@ -55,37 +56,60 @@ abstract class Product
 
 	public function save($connection): void
 	{
-		//Declare sku first in order to check if it already is in the products talbe
+		//Get the product's data
 		$sku = $this->getSKU();
+		$name = $this->getName();
+		$price = $this->getPrice();
+		$type = $this->getType();
+		$properties = $this->getProperties();
 
-		$stmt = $connection->prepare('SELECT * from products where sku = ?');
-		$stmt->bind_param('s', $sku);
-		$stmt->execute();
-		$stmt->store_result();
+		//Instantiate the handler class to validate the data submitted by the user
+		$productData = new ProductDataHandler($sku, $name, $price, $type, $properties);
 
-		//check if a product with the same sku exists, if not then insert into table
-		if($stmt->num_rows > 0 ) {
+		if($productData->isEmpty()) {
 			echo json_encode([
 				'error' => [
-					'target' => 'SKU',
-					'type' => 'Duplicate SKU',
-					'desc' => "The '{$this->getSKU()}' sku already exists!"
+					'target' => 'ALL',
+					'type' => 'Missing Values',
+					'desc' => "Please, submit required!"
 				]
 			]);
-			exit();
 		} else {
-			//Get the rest of the properties for database insertion
-			$name = $this->getName();
-			$price = $this->getPrice();
-			$type = $this->getType();
-			$properties = json_encode($this->getProperties());
+			if($productData->isValid()) {
+				//Prepare statement to check if the sku entered already exists
+				$stmt = $connection->prepare('SELECT * from products where sku = ?');
+				$stmt->bind_param('s', $sku);
+				$stmt->execute();
+				$stmt->store_result();
 
-			$stmt = $connection->prepare("INSERT INTO products (sku, name, price, type, properties) VALUES (?, ?, ?, ?, ?)");
-			$stmt->bind_param("ssdss", $sku, $name, $price, $type, $properties);
-			$stmt->execute();
+				//check if a product with the same sku exists, if not then insert into table
+				if($stmt->num_rows > 0 ) {
+					echo json_encode([
+						'error' => [
+							'target' => 'SKU',
+							'type' => 'Duplicate SKU',
+							'desc' => "The '{$this->getSKU()}' sku already exists!"
+						]
+					]);
+				} else {
+					//Properties need to be in json format to be inserted into db
+					$properties = json_encode($properties);
+					$stmt = $connection->prepare("INSERT INTO products (sku, name, price, type, properties) VALUES (?, ?, ?, ?, ?)");
+					$stmt->bind_param("ssdss", $sku, $name, $price, $type, $properties);
+					$stmt->execute();
 
-			$stmt->close();
-			$connection->close();
+					$stmt->close();
+				}
+			} else {
+				echo json_encode([
+					'error' => [
+						'target' => 'ALL',
+						'type' => 'Invalid Data',
+						'desc' => "Please, provide the data of indicated type!"
+					]
+				]);
+				exit();
+			}
 		}
 	}
 }
