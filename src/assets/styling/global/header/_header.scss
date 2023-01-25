@@ -9,6 +9,9 @@ header {
   justify-content: space-between;
   padding-left: 50px;
   padding-right: 50px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
   @include medium-screen {
     @include box-dimensions(100vw, 200px);
     flex-flow: column nowrap;

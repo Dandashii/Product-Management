@@ -20,6 +20,7 @@
     @include medium-screen {
       @include box-dimensions(150px, 45px);
       @include border-radius(0px);
+      font-size: 18px;
     }
 
     @include extra-small-screen {
@@ -40,10 +41,11 @@
     @include medium-screen {
       @include box-dimensions(150px, 45px);
       @include border-radius(0px);
+      font-size: 18px;
     }
 
     @include extra-small-screen {
-      @include box-dimensions(47vw, 45px);
+      @include box-dimensions(46vw, 45px);
     }
 
     &:hover {
@@ -58,10 +60,11 @@
     @include medium-screen {
       @include box-dimensions(150px, 45px);
       @include border-radius(0px);
+      font-size: 18px;
     }
 
     @include extra-small-screen {
-      @include box-dimensions(47vw, 45px);
+      @include box-dimensions(35vw, 45px);
     }
   }
 }

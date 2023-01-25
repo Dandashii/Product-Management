@@ -11,6 +11,7 @@
 
   @include phone-screen() {
     height: 65px;
+    width: 93vw;
   }
 
   .label-container {
@@ -28,32 +29,10 @@
       font-size: 15px;
       width: 30%;
     }
-  }
 
-  .select-label-container {
-    @include box-dimensions(40%, 100%);
-    @include phone-screen() {
-      width: 50%;
-      font-size:14px;
-    }
-  }
-
-  select {
-    -webkit-appearance: none;
-    outline: none;
-    border: none;
-    padding-left: 10px;
-    @include font-properties($place-holder-color, $place-holder-font-size, $place-holder-font-weight);
-    @include box-dimensions(60%, 100%);
-    @include border-radius(50px);
-    border-radius: 0px 50px 50px 0px;
-    @include phone-screen() {
+    @include extra-small-screen() {
       font-size: 13px;
     }
-  }
-
-  select:hover {
-    cursor: pointer;
   }
 
   input {
@@ -71,6 +50,39 @@
 
     @include phone-screen() {
       font-size: 14px;
+      padding-left: 5px;
     }
+
+    @include extra-small-screen() {
+      padding-left: 5px;
+      font-size: 11px;
+    }
+  }
+
+  .select-label-container {
+    @include box-dimensions(40%, 100%);
+    @include phone-screen() {
+      width: 50%;
+      font-size:14px;
+    }
+  }
+
+  select {
+    -webkit-appearance: none;
+    outline: none;
+    border: none;
+    padding-left: 10px;
+    background: white;
+    @include font-properties($place-holder-color, $place-holder-font-size, $place-holder-font-weight);
+    @include box-dimensions(60%, 100%);
+    @include border-radius(50px);
+    border-radius: 0px 50px 50px 0px;
+    @include phone-screen() {
+      font-size: 13px;
+    }
+  }
+
+  select:hover {
+    cursor: pointer;
   }
 }

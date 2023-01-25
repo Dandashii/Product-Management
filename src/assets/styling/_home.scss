@@ -1,24 +1,22 @@
 @import "global/variables";
 @import "global/mixins";
+
 .product-list-container {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
   gap: 30px;
   padding: 2em;
-
   .product-container {
     padding: 0;
     background: $product-background;
     @include box-dimensions(300px, 270px); //width and height
     @include box-shadow(0px, 4px, 4px, rgba(0, 0, 0, 0.25));
-
     @include flex-center();
     flex-flow: column nowrap;
     @include border-radius(5px);
     @include font-properties($product-font-color, $product-desc-font-size, 400);
     position: relative;
-
     .product-desc-container {
       @include flex-center();
       margin: 0;
@@ -76,13 +74,11 @@
       @include flex-center();
       flex-flow: column nowrap;
       gap: 10px;
-
       .name-container {
         font-weight: bold;
         width: 100%;
         text-align: center;
         gap: 5px;
-
         iconify-icon {
           @include icon-size(25px)
         }

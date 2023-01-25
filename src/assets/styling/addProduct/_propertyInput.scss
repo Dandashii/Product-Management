@@ -39,6 +39,10 @@
       @include phone-screen() {
         font-size: 14px;
       }
+
+      @include extra-small-screen() {
+        font-size: 12px;
+      }
     }
 
     input {
@@ -46,6 +50,7 @@
       padding-left: 10px;
       width: 70%;
       border: none;
+      background: white;
       &:focus {
         outline: none;
       }
