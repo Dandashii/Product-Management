@@ -133,7 +133,7 @@ class ProductAdd extends React.Component {
 						<div className={'label-container'}>
 							<label htmlFor="price">PRICE ($)</label>
 						</div>
-						<input type="number" onChange={this.handleChange} name={'price'} id={'price'} required={true}
+						<input type="number" onChange={this.handleChange} min={1} name={'price'} id={'price'} required={true}
 						       placeholder={'Please provide the price of the product'} />
 					</div>
 
