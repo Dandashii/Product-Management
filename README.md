@@ -1,4 +1,4 @@
-<h1> A product management website that allows users to add a variety of products and display them to the homepage </h1>
+<h1> A product management website</h1>
 
 <h5> Please make the neccessary adjustments to the config file and see the table.sql file for the table schema </h5>
 
