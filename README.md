@@ -1,5 +1,5 @@
 <h5> The website is composed of adding a product and deleteing them. The products are displayed at the homepage </h5>
-<h5> Please see make the neccessary adjustments to the config file and see the table.sql file for the table schema </h5>
+<h5> Please make the neccessary adjustments to the config file and see the table.sql file for the table schema </h5>
 
 <h1> Figma Prototypes </h1>
 
