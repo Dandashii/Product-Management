@@ -12,7 +12,8 @@ include 'abstract/Furniture.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	$products = [];
-	$stmt = $connection->prepare('SELECT * FROM products ORDER BY id DESC');
+
+	$stmt = $connection->prepare('SELECT * FROM ' . $table . ' ORDER BY id DESC');
 	$stmt->execute();
 	$result = $stmt->get_result();
 	while ($row = $result->fetch_object()) {

@@ -54,7 +54,7 @@ abstract class Product
 		$this->type = $type;
 	}
 
-	public function save($connection): void
+	public function save($connection, $table): void
 	{
 		//Get the product's data
 		$sku = $this->getSKU();
@@ -77,7 +77,7 @@ abstract class Product
 		} else {
 			if($productData->isValid()) {
 				//Prepare statement to check if the sku entered already exists
-				$stmt = $connection->prepare('SELECT * from products where sku = ?');
+				$stmt = $connection->prepare('SELECT * from ' . $table . ' where sku = ?');
 				$stmt->bind_param('s', $sku);
 				$stmt->execute();
 				$stmt->store_result();
@@ -94,7 +94,7 @@ abstract class Product
 				} else {
 					//Properties need to be in json format to be inserted into db
 					$properties = json_encode($properties);
-					$stmt = $connection->prepare("INSERT INTO products (sku, name, price, type, properties) VALUES (?, ?, ?, ?, ?)");
+					$stmt = $connection->prepare('INSERT INTO ' . $table . ' (sku, name, price, type, properties) VALUES (?, ?, ?, ?, ?)');
 					$stmt->bind_param("ssdss", $sku, $name, $price, $type, $properties);
 					$stmt->execute();
 

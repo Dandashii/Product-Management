@@ -11,7 +11,6 @@ include 'abstract/Product.php';
 include 'abstract/DVD.php';
 include 'abstract/Book.php';
 include 'abstract/Furniture.php';
-
 include 'handlers/ProductDataHandler.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -27,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$product = new $productType($productData->sku, $productData->name, $productData->price, $productData->properties);
 
 	//save the product into the product's table
-	$product->save($connection);
+	$product->save($connection, $table);
 
 	$connection->close();
 

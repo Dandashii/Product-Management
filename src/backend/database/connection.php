@@ -3,7 +3,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "scandiweb";
-$table = "product";
+$table = "products";
 
 $connection = new mysqli($servername, $username, $password, $dbname);
 

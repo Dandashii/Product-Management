@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$formData = file_get_contents('php://input');
 	$selectedProducts = json_decode($formData);
 	foreach ($selectedProducts as $product) {
-		$stmt = $connection->prepare("DELETE FROM product where sku = ?");
+		$stmt = $connection->prepare('DELETE FROM ' . $table . ' where sku = ?');
 		$stmt->bind_param('s', $product);
 		$stmt->execute();
 	}
