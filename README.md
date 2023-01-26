@@ -1,6 +1,6 @@
 <h1> A product management website</h1>
 
-<h5> Please make the neccessary adjustments to the config file and see the table.sql file for the table schema </h5>
+<h2> Please make the neccessary adjustments to the config file and see the table.sql file for the table schema </h5>
 
 <h1> Figma Prototypes </h1>
 
