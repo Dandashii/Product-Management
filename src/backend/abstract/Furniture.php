@@ -16,7 +16,7 @@ class Furniture extends Product
 		return $this->properties;
 	}
 
-	public function setProperties($properties): void
+	private function setProperties($properties): void
 	{
 		$this->properties = (object) [
 			'height' => $properties->height,
