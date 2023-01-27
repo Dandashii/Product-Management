@@ -1,6 +1,6 @@
 <?php
 
-abstract class Product
+class Product
 {
 	public string $sku;
 	public string $name;
@@ -52,6 +52,44 @@ abstract class Product
 	public function setType($type)
 	{
 		$this->type = $type;
+	}
+
+	//made it static because i am not accessing anything special in the class itself.
+
+	public static function removeProducts($connection, $table, $selectedProducts)
+	{
+		foreach ($selectedProducts as $product) {
+			$stmt = $connection->prepare('DELETE FROM ' . $table . ' where sku = ?');
+			$stmt->bind_param('s', $product);
+			$stmt->execute();
+		}
+		$connection->close();
+	}
+
+	//made it static because i am not accessing anything special in the class itself.
+	public static function getProducts($connection, $table): array
+	{
+		$products = [];
+
+		$stmt = $connection->prepare('SELECT * FROM ' . $table . ' ORDER BY id DESC');
+		$stmt->execute();
+		$result = $stmt->get_result();
+		while ($row = $result->fetch_object()) {
+			//had to do this because the properties in table are in stringed format.
+			$properties = json_decode($row->properties);
+
+			//set the type of retrieved product
+			$productType = $row->type;
+
+			//instantiate the respective class of the product
+			$product = new $productType($row->sku, $row->name, $row->price, $properties);
+
+			//push the product into the list of products
+			$products[] = $product;
+		}
+
+		$connection->close();
+		return $products;
 	}
 
 	public function save($connection, $table): void
