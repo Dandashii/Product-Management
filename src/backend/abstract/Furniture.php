@@ -4,6 +4,7 @@ class Furniture extends Product
 {
 	public string $type = 'Furniture';
 	public object $properties;
+
 	public function __construct(string $sku = null, string $name = null, int $price = null, object $properties = null)
 	{
 		parent::__construct($sku, $name, $price);
@@ -15,7 +16,7 @@ class Furniture extends Product
 		return $this->properties;
 	}
 
-	private function setProperties($properties): void
+	public function setProperties($properties): void
 	{
 		$this->properties = (object) [
 			'height' => $properties->height,

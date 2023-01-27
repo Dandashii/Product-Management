@@ -29,19 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$product->save($connection, $table);
 
 	$connection->close();
-
-	//Old method, realized it was wrong later because i cannot use conditionals incase there were thousands of products...
-	//Return the appropriate initialized class
-	/*
-	$product = match ($productData->type) {
-		"DVD" => new DVD($productData->sku, $productData->name, $productData->price, $productData->type,
-			$productData->properties->size),
-		"Book" => new Book($productData->sku, $productData->name, $productData->price, $productData->type,
-			$productData->properties->weight),
-		"Furniture" => new Furniture($productData->sku, $productData->name, $productData->price, $productData->type,
-			$productData->properties->height, $productData->properties->width, $productData->properties->length),
-		default => "Unknown type of product",
-	};*/
 }
 
 
