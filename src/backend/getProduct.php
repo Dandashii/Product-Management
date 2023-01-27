@@ -17,7 +17,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	//send them to be displayed
 	echo json_encode($products);
 }
-
-
-
-
