@@ -1,5 +1,3 @@
-<h1> A product management website</h1>
-
 <h1> Figma Prototypes </h1>
 
 <h3> Homepage </h3>
