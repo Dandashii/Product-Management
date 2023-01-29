@@ -45,7 +45,7 @@ class ProductDataHandler
 	public function isSkuValid(): bool
 	{
 		//checks if the sku is made up of only letters, numbers and hyphens
-		if(preg_match('/^[a-zA-Z0-9-]{1,30}$/', $this->sku) && (strlen($this->sku) <= 40)) {
+		if(preg_match('/^[a-zA-Z0-9-]{1,30}$/', $this->sku) && (strlen($this->sku) <= 30)) {
 			return true;
 		} else {
 			return false;
