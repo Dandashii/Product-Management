@@ -55,7 +55,6 @@ class Product
 	}
 
 	//made it static because i am not accessing anything special in the class itself.
-
 	public static function removeProducts($connection, $table, $selectedProducts)
 	{
 		foreach ($selectedProducts as $product) {
