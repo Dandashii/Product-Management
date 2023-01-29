@@ -80,9 +80,9 @@
     @include phone-screen() {
       font-size: 13px;
     }
-  }
-
-  select:hover {
-    cursor: pointer;
+    
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
