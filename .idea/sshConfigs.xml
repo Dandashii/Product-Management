@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="dandashi.com.tr" id="83431a02-f5b3-4701-80bb-7e7220dc253e" port="22" nameFormat="DESCRIPTIVE" username="root_user" useOpenSSHConfig="true" />
+      <sshConfig authType="PASSWORD" host="20.4.10.15" id="2da4e7b4-2a86-4d5d-bb60-62daf4381c1d" port="22" nameFormat="DESCRIPTIVE" username="root_user" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>

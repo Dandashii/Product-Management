@@ -24,8 +24,7 @@ const HomePageHeader = (props) => {
 					linkBtnPage={'add-product'}
 				/>
 				{/* if you are wondering as to why I simply didn't place the button into the nav, is
-			because non-linking buttons shouldn't be placed into the nav therefore
-			I had to find a workaround from not creating a NAVBAR for each page*/}
+			because non-linking buttons shouldn't be placed into the nav*/}
 				<button onClick={() => props.handleDelete()} id={'delete-product-btn'} className={'header-action-btn'}>MASS DELETE</button>
 			</div>
 		</>

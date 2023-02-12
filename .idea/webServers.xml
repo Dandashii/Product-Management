@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="6452ec84-cb20-41dd-a517-0b7d2f1d4c47" name="dandashi.com.tr." url="http://dandashi.com.tr">
+        <fileTransfer accessType="SFTP" host="dandashi.com.tr" port="22" sshConfigId="83431a02-f5b3-4701-80bb-7e7220dc253e" sshConfig="root_user@dandashi.com.tr:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="8a929d0d-f80a-4ad6-9123-627bccc0f8f7" name="back-end">
+        <fileTransfer accessType="SFTP" host="20.4.10.15" port="22" sshConfigId="2da4e7b4-2a86-4d5d-bb60-62daf4381c1d" sshConfig="root_user@20.4.10.15:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
