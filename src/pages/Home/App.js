@@ -3,7 +3,7 @@ import Header from "../../layout/Header.js";
 import Footer from "../../layout/Footer.js";
 import axios from "axios";
 import Product from "./Product";
-import '../../assets/styling/_home.sass';
+import '../../assets/styling/pages/_home.sass';
 
 export default class ProductList extends React.Component {
 	constructor(props) {

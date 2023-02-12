@@ -16,12 +16,12 @@ class Book extends Product
 		return $this->properties;
 	}
 
-	public function setProperties($properties)
+	public function setProperties($properties): void
 	{
 		$this->properties = (object) ['weight' => $properties->weight];
 	}
 
-	public function setWeight($weight)
+	public function setWeight($weight): void
 	{
 		$this->properties->weight = $weight;
 	}

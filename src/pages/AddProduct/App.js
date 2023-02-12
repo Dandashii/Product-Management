@@ -4,7 +4,7 @@ import Footer from "../../layout/Footer.js";
 import axios from "axios";
 import Notification from "./Notification";
 import Properties from "./Properties";
-import '../../assets/styling/addProduct/_addproduct.sass';
+import '../../assets/styling/pages/addProduct/_addproduct.sass';
 
 class ProductAdd extends React.Component {
 	constructor(props) {

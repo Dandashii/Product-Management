@@ -29,27 +29,27 @@ abstract class Product
 		return $this->name;
 	}
 
-	public function setName($name)
+	public function setName($name): void
 	{
 		$this->name = $name;
 	}
 
-	public function getPrice()
+	public function getPrice(): int
 	{
 		return $this->price;
 	}
 
-	public function setPrice($price)
+	public function setPrice($price): void
 	{
 		$this->price = $price;
 	}
 
-	public function getType()
+	public function getType(): string
 	{
 		return $this->type;
 	}
 
-	public function setType($type)
+	public function setType($type): void
 	{
 		$this->type = $type;
 	}
