@@ -9,6 +9,7 @@ include 'database/connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$formData = file_get_contents('php://input');
+
 	//Retrieve the sku of the selected products
 	$selectedProducts = json_decode($formData);
 

@@ -4,7 +4,7 @@ import Footer from "../../layout/Footer.js";
 import axios from "axios";
 import Notification from "./Notification";
 import Properties from "./Properties";
-import '../../assets/styling/addProduct/_addproduct.scss';
+import '../../assets/styling/addProduct/_addproduct.sass';
 
 class ProductAdd extends React.Component {
 	constructor(props) {
@@ -14,7 +14,7 @@ class ProductAdd extends React.Component {
 			currentPage: 'productAdd',
 			sku: '',
 			name: '',
-			price: 0,
+			price: '',
 			type: '',
 			properties: {},
 			error: {
@@ -36,7 +36,7 @@ class ProductAdd extends React.Component {
 		this.setState({
 			sku: '',
 			name: '',
-			price: 0,
+			price: '',
 			type: '',
 			properties: {},
 			error: {
@@ -50,18 +50,25 @@ class ProductAdd extends React.Component {
 
 	saveProduct(event) {
 		event.preventDefault();
+		const {sku, name, price, type, properties} = this.state;
 
-		const productData = JSON.stringify({
-				sku: this.state.sku.split(" ").join(""), //remove whitespace
-				name: this.state.name,
-				price: this.state.price,
-				type: this.state.type,
-				properties: this.state.properties
-			}
-		);
-
-		axios.post('http://localhost:8080/addProduct.php', productData)
-			.then(response => {
+		if(isEmpty(sku) || isEmpty(name) || isEmpty(type) || isEmpty(price) || isPropertyEmpty(properties)) {
+			this.setState({
+				error: {
+					target: 'ALL',
+					type: 'Missing Values',
+					desc: 'Please, submit the required values!',
+					display: true,
+				}
+			});
+		} else {
+			axios.post('http://localhost:8080/addProduct.php', {
+				sku: sku,
+				name: name,
+				price: price,
+				type: type,
+				properties: properties
+			}).then(response => {
 				if (response.data.error) {
 					this.setState({
 						error: {
@@ -70,17 +77,16 @@ class ProductAdd extends React.Component {
 							desc: response.data.error.desc,
 							display: true,
 						}
-					})
+					});
 				} else {
 					this.clearStates();
 					event.target.reset();
 				}
-			})
-			.catch(error => {
+			}).catch(error => {
 				console.error(error);
 			});
+		}
 	}
-
 
 	handleChange(event) {
 		this.setState({ [event.target.name] : event.target.value });
@@ -88,7 +94,8 @@ class ProductAdd extends React.Component {
 
 	changeProductType(event) {
 		this.setState({
-			type: event.target.value
+			type: event.target.value,
+			properties: productProperties[event.target.value]
 		});
 	}
 
@@ -133,7 +140,7 @@ class ProductAdd extends React.Component {
 						<div className={'label-container'}>
 							<label htmlFor="price">PRICE ($)</label>
 						</div>
-						<input type="number" onChange={this.handleChange} min={1} name={'price'} id={'price'} required={true}
+						<input type="number" onChange={this.handleChange} name={'price'} id={'price'}
 						       placeholder={'Please provide the price of the product'} />
 					</div>
 
@@ -163,3 +170,32 @@ class ProductAdd extends React.Component {
 }
 
 export default ProductAdd;
+
+const productProperties = {
+	'DVD': {
+		size: ''
+	},
+	'Book': {
+		weight: ''
+	},
+	'Furniture': {
+		height: '',
+		width: '',
+		length: ''
+	}
+}
+
+function isEmpty(property) {
+	return property.length === 0;
+}
+
+function isPropertyEmpty(properties) {
+	//Check the value of the keys inside the properties object
+	for (const property in properties) {
+		if(isEmpty(properties[property])) {
+			return true;
+		}
+	}
+
+	return false;
+}

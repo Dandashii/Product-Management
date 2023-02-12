@@ -1,0 +1,19 @@
+footer
+  height: 150px
+  background-color: $layout-color
+  @include flex-center
+  flex-flow: column nowrap
+  color: $layout-font-color
+  font-weight: bold
+
+  .footer-title
+    font-size: 30px
+    margin: 0
+    @include phone-screen
+      font-size: 6vw
+
+  .footer-author
+    font-size: 20px
+    margin: 10px
+    @include phone-screen
+      font-size: 5vw

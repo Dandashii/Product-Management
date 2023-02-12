@@ -1,4 +1,4 @@
-create table products (
+create table scandiweb.products (
                           id         int auto_increment primary key,
                           sku        varchar(255)                 not null,
                           name       varchar(100)                 not null,
@@ -9,3 +9,5 @@ create table products (
                           constraint sku
                               unique (sku)
 );
+
+

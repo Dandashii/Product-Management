@@ -1,4 +1,4 @@
-import '../../assets/styling/_home.scss';
+import '../../assets/styling/_home.sass';
 
 const Product = (props) => {
 	const productTypes = {

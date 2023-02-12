@@ -27,8 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	//save the product into the product's table
 	$product->save($connection, $table);
-
-	$connection->close();
 }
 
 

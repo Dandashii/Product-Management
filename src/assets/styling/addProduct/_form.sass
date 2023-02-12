@@ -1,0 +1,34 @@
+@import "mainInput"
+@import "propertyInput"
+
+#product_form
+  padding: 5em 2em
+  display: flex
+  flex-flow: column nowrap
+  gap: 50px
+
+  @include medium-screen()
+    align-items: center
+
+  .select-label-container
+    @include box-dimensions(40%, 100%)
+    @include phone-screen()
+      width: 50%
+      font-size: 14px
+
+  select
+    -webkit-appearance: none
+    outline: none
+    border: none
+    padding-left: 10px
+    background: white
+    @include font-properties($place-holder-color, $place-holder-font-size, $place-holder-font-weight)
+    @include box-dimensions(60%, 100%)
+    @include border-radius(50px)
+    border-radius: 0px 50px 50px 0px
+
+    @include phone-screen()
+      font-size: 12px
+
+    &:hover
+      cursor: pointer

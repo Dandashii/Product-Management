@@ -3,7 +3,7 @@ import Header from "../../layout/Header.js";
 import Footer from "../../layout/Footer.js";
 import axios from "axios";
 import Product from "./Product";
-import '../../assets/styling/_home.scss';
+import '../../assets/styling/_home.sass';
 
 export default class ProductList extends React.Component {
 	constructor(props) {
@@ -22,7 +22,7 @@ export default class ProductList extends React.Component {
 	}
 
 	handleDelete () {
-		const selectedProducts = JSON.stringify(this.state.selectedProducts);
+		const selectedProducts = this.state.selectedProducts;
 		axios.post('http://localhost:8080/removeProduct.php', selectedProducts)
 			.then(response => {
 				this.getProducts();
@@ -73,8 +73,7 @@ export default class ProductList extends React.Component {
 			<>
 				<Header pageTitle={this.state.pageTitle}
 				        currentPage={this.state.currentPage}
-				        handleDelete={this.handleDelete}
-				/>
+				        handleDelete={this.handleDelete} />
 
 				<section className={'product-list-container'}>
 					{this.state.products.map(product => (
