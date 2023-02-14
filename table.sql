@@ -1,13 +1,8 @@
-create table scandiweb.products (
-                          id         int auto_increment primary key,
-                          sku        varchar(255)                 not null,
-                          name       varchar(100)                 not null,
-                          price      decimal(10, 2)               not null,
-                          type       varchar(50)                  not null,
-                          properties longtext collate utf8mb4_bin not null
-                              check (json_valid(`properties`)),
-                          constraint sku
-                              unique (sku)
+CREATE TABLE products (
+                          id int AUTO_INCREMENT PRIMARY KEY,
+                          sku varchar(255) NOT NULL UNIQUE,
+                          name varchar(100) NOT NULL,
+                          price decimal(10,2) NOT NULL,
+                          type varchar(50) NOT NULL,
+                          properties JSON NOT NULL
 );
-
-
