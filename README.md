@@ -1,5 +1,5 @@
 <h1> Figma Prototypes </h1>
-<h2> https://www.figma.com/file/l7eXb1KAHAxfS7ughHXkgH/Scandiweb?t=lbzGgBAXPAA4vHDD-1 </h2>
+<h5> https://www.figma.com/file/l7eXb1KAHAxfS7ughHXkgH/Scandiweb?t=lbzGgBAXPAA4vHDD-1 </h5>
 
 <h3> Homepage </h3>
 <img width="1440" alt="Products List" src="https://user-images.githubusercontent.com/9285042/214294608-efc2d951-7863-46c2-87c5-329c1aa50f4d.png">
