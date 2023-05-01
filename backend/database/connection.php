@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "dandashi";
+$password = "password";
 $dbname = "scandiweb";
 $table = "products";
 
